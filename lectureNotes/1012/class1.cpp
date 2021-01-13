@@ -15,6 +15,7 @@ class Color {
         double _red, _green, _blue;
 
     public:
+        // Initializing attributes outside the boday is called "delegation"
         // Defalut constructor, MUST be defined explicitly if there's another constructor
         // !If you create a constructor, you must create a defalut constructor
         Color() : _red(0), _green(0), _blue(0) {
