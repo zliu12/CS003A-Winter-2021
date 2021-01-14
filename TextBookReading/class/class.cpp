@@ -11,14 +11,15 @@
  */
 //Type DayofYear is a class definition for objs whose values are dates
 #include <iostream>
+#include <cstdio>
 class DayofYear
 {
     // public says the member vars and funcs have no restriction on them
-public:
-    void output(); // list member function declaration only, definiton is given elsewhere
-    void input();  // list member function declaration only, definition is given elsewhere
-    int month;     // member variable
-    int day;       // member variable
+    public:
+        void output(); // list member function declaration only, definiton is given elsewhere
+        void input();  // list member function declaration only, definition is given elsewhere
+        int month;     // member variable
+        int day;       // member variable
 };
 
 int main()
@@ -239,4 +240,103 @@ void DayOfYear::checkDate()
         }
     }
 } 
+*/
+
+/* 
+Summmary of Some Properties of Classes
+Properties of class = properties of structures + properties associated w/ member functions:
+1. member variables/functions
+2. member variables/functions can be public or private, 
+3. member variables are private normally
+4. member variables can only be used in the definition of member functions for one same class
+5. name of member functions can be overloaded
+6. A class may use another as the type for a member variable
+7. A function may have formal parameters whose types are classes
+8. A function may return an object, which a class may be the type for the value returned by a function
+*/
+
+/* 
+Structures VS Classes
+Struct:
+    1. member variables are public and no member functions normally, but can have private/public member variable/functions in c++
+    2. A c++ struct can do anything a class can do.*/
+
+/*
+Constructor for Initialization
+A constructor is a member function that is automatically called when an object of that class is declared, used to initialize the values
+of member variables and any other sort of initialization may be needed; Normally public
+! 1. Must have the sanme name as the class
+! 2. Definition cannot return a value, no return type
+! 3. Cannot be called in the same way as an ordinary member function is called. eg: object.memberFunction() // Illegal
+Constructors usually are overloaded so that objects can be initialized in more than one way
+*/
+class BankAccount {
+    public:
+        // constructor overloaded
+        BankAccount(int dollars, int cents, double rate);  
+        BankAccount(int dollars, double rate);
+        BankAccount();
+        
+        // Mutator function overloaded
+        void set(int dollars, int cents, double rate);
+        void set(int dollars, int cents);
+        
+        void update();
+    private:
+        double balance;
+        double interestRate;
+        // Helper function, convert a percentage to a fraction, fraction(50.3) returns 0.503
+        double fraction(double percent)
+}
+
+int main() {
+    BankAccount account1(100, 2.3); // object with two args
+    BankAccount account2;           // object with no args, no parentheses in object declaration
+    
+    // This technical is calling the constructor creates an anonymous object w/ new values. An anonymous object is an object that is 
+    // not named (as yet) by any variable. Then assign to the named object (the class variable)
+    account3 = BankAccount(999, 99, 5.5)
+/*
+Mutator functions may be omitted if having a good set of constructor definition in some cases, but if want to change the existing member
+variables in the object, then should use a mutator function. eg: account3.set(77, 0.77) or account4.set(88, 0.88, 8.8
+*/
+}
+
+/*
+Constructor is a member function that has the same name as the class. 
+Auto called when declare an object of the class.
+Are used to initialize objects.
+Must have the same name with the class possess it*/
+
+/*
+Initialization section in constructor initialization section, the part starts w/ a single colon
+The initializing values can be given in terms of the constructor parameters
+Below two constructor definitions are equivalent
+*/
+BankAccount::BankAccount() : balance(0), interestRate(0.0) {
+    // Body intentionally empty, can also be not empty
+}
+BankAccount::BankAccount() {
+    balance = 0;
+    interestRate = 0;
+}
+
+BankAccount::BankAccount(int dollars, int cents, double rate) : balance(dollars + 0.01 * cents), interestRate(rate) {
+    if ((dollar < 0) || (cents < 0) || (rate < 0)) {
+        printf("Illegal Message\n");
+        exit(1);
+    }
+}
+
+/*
+Syntax:
+1. for an object declaration when you have consturctors
+    ClassName ObjectName(ArgumentsForConstructor);
+    eg. BankAccount account1(100, 2.3);
+2. for an explicit constructor call
+    object = ConstructorName(ArgurmentForConstructor);
+    eg. account1 = BankAccount(200,3.5);
+3. If the object is created as a dynamic variable
+    BankAccount *myAcct;
+    myAcct = new BankAccount (300, 4.2);
 */
