@@ -376,5 +376,9 @@ class SavingsAccount : public BankAccount {
  * 4. A function may have formal params of a class or struct, may return values of a class or struct type.
  * 5. Member function can be overloaded.
  * 6. Constructor: member function of the class, same name as its class name,auto called when an class type obj is created.
- * 7. 
+ * 7. A data type consists of a collection of values together with a set of basic operations defined on these values
+ * 8. ADT: abstract data type, a programmer who uses the type does not need to know any of the details about how the values and
+ * operations for that type are implemented.
+ * 9. A class with all member variables private and member functions public is one way to implement ADT in c++
+ * 10. Inheritance: (parent)class -> (child/derived)class (inherits members from the parent class)
  */

@@ -116,59 +116,69 @@ public:
 //     printf("ID: %d, phone: %s\n", m._id, m._phone.c_str());
 // }
 
-class Class {
-    private:
-        Student *_students;
-        int _size, _capacity;
+class Class
+{
+private:
+    Student *_students;
+    int _size, _capacity;
 
-    public:
-        Class(int max) {
-            // Students instances are dynamically allocated, using the default constructor
-            _students = new Student[max];
-            _size = 0;
-            _capacity = max;
-        }
+public:
+    Class(int max)
+    {
+        // Students instances are dynamically allocated, using the default constructor
+        _students = new Student[max];
+        _size = 0;
+        _capacity = max;
+    }
 
-        // Copy constructor
-        Class(const Class &c) {
-            _size = 0;
-            _students = new Student[c._capacity];
-            printf("Copy constructor!\n");
-        }
+    // Copy constructor
+    Class(const Class &c)
+    {
+        _size = 0;
+        _students = new Student[c._capacity];
+        printf("Copy constructor!\n");
+    }
 
-        // Called every time the instance is de-allocated
-        // ALWAYS implement destructor to clear memory/resources allocated during the lifetime
-        // of the class
-        ~Class() {
-            delete [] _students;
-        }
+    // Called every time the instance is de-allocated
+    // ALWAYS implement destructor to clear memory/resources allocated during the lifetime
+    // of the class
+    ~Class()
+    {
+        delete[] _students;
+    }
 
-        bool addStudent(Student s) {
-            if (_size == _capacity) {
-                return false;
-            }
-            // Note that this copies the student by copying the memory
-            _students[_size] = s;
-            return true;
+    bool addStudent(Student s)
+    {
+        if (_size == _capacity)
+        {
+            return false;
         }
+        // Note that this copies the student by copying the memory
+        _students[_size] = s;
+        return true;
+    }
 
-        // Get student by index
-        bool getStudent(int num, Student *s) {
-            if (num < 0 || num >= _size) {
-                return false;
-            }
-            *s = _students[num];
-            return true;
+    // Get student by index
+    bool getStudent(int num, Student *s)
+    {
+        if (num < 0 || num >= _size)
+        {
+            return false;
         }
+        *s = _students[num];
+        return true;
+    }
 
-        int size() {
-            return _size;
-        }
+    int size()
+    {
+        return _size;
+    }
 };
 
 // Note that const char * is getting converted to std::string on return
 // You should NOT return a pointer to the buffer directly!
-std::string phone() {
+std::string phone()
+{
     char number[13];
     sprintf(number, "%3d-%3d-%4d", RAND(3), RAND(3), RAND(4));
     return number;
@@ -180,15 +190,19 @@ int main()
     // But, its internal attribute _students hold memory on the heap which is NOT
     // de-allocated automatically.
     Class cs3a(CLASS_SIZE);
-    for (int i = 0; i < CLASS_SIZE + 5; i++) {
-        if (!cs3a.addStudent(Student(phone()))) {
+    for (int i = 0; i < CLASS_SIZE + 5; i++)
+    {
+        if (!cs3a.addStudent(Student(phone())))
+        {
             printf("[%d]: could not add students!\n", i);
         }
     }
 
     Student s;
-    for (int i = 0; i < CLASS_SIZE; i++) {
-        if (cs3a.getStudent(i, &s)) {
+    for (int i = 0; i < CLASS_SIZE; i++)
+    {
+        if (cs3a.getStudent(i, &s))
+        {
             s.dump();
         }
     }
