@@ -22,6 +22,7 @@ class Member {
         std::string _phone;
         
         // Avoid the "friend" declaration like the plague, it breaks the encapsulation (data hiding)
+        // Can be used when re-implenmention
         friend void dump(Member);
 
     public:
