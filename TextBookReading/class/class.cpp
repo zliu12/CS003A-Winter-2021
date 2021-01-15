@@ -286,16 +286,17 @@ class BankAccount {
         double balance;
         double interestRate;
         // Helper function, convert a percentage to a fraction, fraction(50.3) returns 0.503
-        double fraction(double percent)
-}
+        double fraction(double percent);
+};
 
 int main() {
     BankAccount account1(100, 2.3); // object with two args
     BankAccount account2;           // object with no args, no parentheses in object declaration
-    
+    BankAccount account3;
+
     // This technical is calling the constructor creates an anonymous object w/ new values. An anonymous object is an object that is 
     // not named (as yet) by any variable. Then assign to the named object (the class variable)
-    account3 = BankAccount(999, 99, 5.5)
+    account3 = BankAccount(999, 99, 5.5);
 /*
 Mutator functions may be omitted if having a good set of constructor definition in some cases, but if want to change the existing member
 variables in the object, then should use a mutator function. eg: account3.set(77, 0.77) or account4.set(88, 0.88, 8.8
@@ -322,7 +323,7 @@ BankAccount::BankAccount() {
 }
 
 BankAccount::BankAccount(int dollars, int cents, double rate) : balance(dollars + 0.01 * cents), interestRate(rate) {
-    if ((dollar < 0) || (cents < 0) || (rate < 0)) {
+    if ((dollars < 0) || (cents < 0) || (rate < 0)) {
         printf("Illegal Message\n");
         exit(1);
     }
@@ -340,3 +341,40 @@ Syntax:
     BankAccount *myAcct;
     myAcct = new BankAccount (300, 4.2);
 */
+
+/**
+10.4-Introduction to Inheritance/Derived class
+ * Derived class: obtained from the class class by adding features: say class A is a derived class of some other class B, it means class A
+ * has all the features of class B but it also has added features; a class A can be a derived class of some other class B, which in turn
+ * can be a derived class of some other class C, and so on.
+ * eg.
+ *  class MoneyMarketAccount -> class CheckingAccout -> class BankAccout;
+ *  class CDAccount -> class SavingsAccount -> class BankAccount;
+ */
+class SavingsAccount : public BankAccount {
+    public:
+        SavingsAccount(int dollars, int cents, double rate);
+        // ...Other constructors...
+        void deposit(int dollars, int cents);
+        void withdraw(int dollars, int cents);
+    private:
+};
+/**
+ * SavingsAccount account(100, 50, 5.5);
+ * account.deposit(10, 25);             // Invoking a function in the derived class 
+ * account.output(cout);                // Invoking a function in the parent class, BankAccount
+ */
+
+
+/**
+ * Chapter Summary
+ * 1. Struct: combine data of different types into a single/compound data value.
+ * 2. Class: combine data and functions into a single/compound object. 
+ * 3. A member variable/function of a class can be private/public;
+ *  1) if public, can be used outside of the class.
+ *  2) if private, can be used only in the definition of the member functions in within the class.
+ * 4. A function may have formal params of a class or struct, may return values of a class or struct type.
+ * 5. Member function can be overloaded.
+ * 6. Constructor: member function of the class, same name as its class name,auto called when an class type obj is created.
+ * 7. 
+ */
