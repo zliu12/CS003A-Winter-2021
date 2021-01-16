@@ -101,7 +101,6 @@ int main() {
   // "Add" colors
   Color c3 = c1 + c2;   // Equivalent to "Color c3 = c1.operator+(c2);"
   c3.dump("c3");
-  c3.scale(0.5);
   c3.dump("c3");
   c1.dump("c1");
 
