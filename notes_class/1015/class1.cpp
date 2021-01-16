@@ -7,11 +7,13 @@
 #include <cstdio>
 #include <iostream>
 #include <cmath>
+
 #define NUDGE 0.01
 
 class Color {
- private:
+ private: 
   double _red, _green, _blue;
+
   double _value(double v) {
     if (v < 0) {
     return 0;
@@ -32,11 +34,6 @@ class Color {
 
   Color(double r, double g, double b) : _red(_value(r)), _green(_value(g)),
                                         _blue(_value(b)) {
-  }
-
-  // Copy constructor
-  Color (const Color &c) : _red(c._red), _green(c._green), _blue(c._blue)) {
-    printf("Copy constructor: %.2lf, %.2lf, %.2lf")
   }
 
   double value() {
@@ -74,19 +71,45 @@ class Color {
 
   // Unary "post" ++
   Color operator++(int) {
-    Color original = *this;
+    Color o = *this;
     _red += NUDGE;
     _green += NUDGE;
     _blue += NUDGE;
-    return original;
+    return o;
   }
 
-  void dump(const *char t) {
-    printf("%s: [%.2lf, %.2lf, %.2lf]\n", t, _red, _green, _blue);
+	// Assignment operator
+	Color operator=(const Color &c) {
+		_red = c._red;
+		_green = c._green;
+		_blue = c._blue;
+		return *this;
+	}
+
+	// Return by copy
+	Color copy() {
+		return *this;
+	}
+
+	// Return by reference
+	Color &ref() {
+		return *this;
+	}
+
+	// Uses the constructor for std::string that accept char *
+	std::string toString() const {
+		char buf[0x100];
+		sprintf(buf, "[%.2lf, %.2lf, %.2lf]", _red, _green, _blue);
+		return buf;
+	}
+
+  void dump(const char *t) {
+		// Note that we need to extract the C string value out of std::string
+    printf("%s: %s\n", t, toString().c_str());
   }
 };
 
-// Reqire for operations with the scale in front
+// Required for operations with the scale in front
 Color operator*(double s, Color c) {
   // This works because we do have Color::operator * (double);
   // Cannot return Color(c._red * s, c._green * s, c._blue * s) because
@@ -94,35 +117,67 @@ Color operator*(double s, Color c) {
   return c * s;
 }
 
+std::ostream &operator<<(std::ostream &os, const Color &c) {
+	return os << c.toString();
+}
+
+// & before the c parameter is vital
+std::istream &operator>>(std::istream &is, Color &c) {
+	double r, g, b;
+	is >> r >> g >> b;
+	c = Color(r, g, b);
+	return is;
+}
+
 int main() {
+	// Call constructor @ln35
   Color c1(0.5, 0.2, 0.2);
   Color c2(0.1, 0.3, 0.2);
+	c1.dump("c1");
+	c2.dump("c2");
 
   // "Add" colors
   Color c3 = c1 + c2;   // Equivalent to "Color c3 = c1.operator+(c2);"
   c3.dump("c3");
-  c3.dump("c3");
-  c1.dump("c1");
 
-  // // "Cascaded" addition
-  // Color c4 = c1 + c2 + c3.scale(0.1);
-  // c4.dump("c4");
+  // "Cascaded" addition
+  Color c4 = c1 + c2 + c3.scale(0.1);
+  c4.dump("c4");
 
-  // // Multiply operator overloading
-  // Color c5 = c4 * 0.2;  // Equivalent to "Color c5 = c4.operator*(0.2)"
-  // c5.dump("c5");
+  // Multiply operator overloading
+  Color c5 = c4 * 0.2;  // Equivalent to "Color c5 = c4.operator*(0.2)"
+  c5.dump("c5");
 
-  // // Multiply with scale first
-  // Color c6 = 0.2 * c4;
-  // c6.dump("c6");
+  // Multiply with scale first
+  Color c6 = 0.2 * c4;
+  c6.dump("c6");
 
-  // // Unary "pre" ++
-  // Color c7 = ++c6;
-  // c6.dump("c6");
-  // c7.dump("c7");
+  // Unary "pre" ++
+  Color c7 = ++c6;
+  c6.dump("c6");
+  c7.dump("c7");
 
-  // // Unary "post" ++
-  // Color c8 = c6++;
-  // c6.dump("c6");
-  // c8.dump("c8");
+  // Unary "post" ++
+  Color c8 = c6++;
+  c6.dump("c6");
+  c8.dump("c8");
+
+	// Return by copy vs return by reference
+	(++(c8.copy())).dump("++(c8.copy())");
+	c8.dump("c8");
+	(++(c8.ref())).dump("++(c9.ref())");
+	c8.dump("c8");
+
+	// Create as reference
+	Color &c9 = c8;
+	c9++;
+	c8.dump("c8");
+
+	// Using std::cout operator overloading
+	std::cout << "[Using std::cout] c8: " << c8 << std::endl;
+
+	// Using std::cin operator overloading
+	Color c10;
+	std::cin >> c10;
+	c10.dump("c10");
 }
