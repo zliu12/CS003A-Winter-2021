@@ -1,25 +1,30 @@
 /**
  * Class
+ *
+ * Copyright (c) [2021], Qichang.L
  */
 
 /**
  * Defining classes and member functions
- * A data type whose variables are objects, an obj as a var has member functions as well as the abitliy to hold data values
- * The definition of a class should be a data type definition that describes what kinds of values the variables can hold and also what the 
- * member functions are.
+ * A data type whose variables are objects, an obj as a var has member functions
+ * as well as the abitliy to hold data values
+ * The definition of a class should be a data type definition that describes 
+ * what kinds of values the variables can hold and also what member funcs are.
  * Add some member functions to a struct so that obtain a class
  */
-//Type DayofYear is a class definition for objs whose values are dates
+
+// Type DayofYear is a class definition for objs whose values are dates
 #include <iostream>
 #include <cstdio>
-class DayofYear
-{
-    // public says the member vars and funcs have no restriction on them
-    public:
-        void output(); // list member function declaration only, definiton is given elsewhere
-        void input();  // list member function declaration only, definition is given elsewhere
-        int month;     // member variable
-        int day;       // member variable
+class DayofYear {
+  // public says the member vars and funcs have no restriction on them
+  public:
+    // list member function declaration only, definiton is given elsewhere
+    void output();
+    void input();
+    // member variable
+    int month;
+    int day;
 };
 
 int main()
@@ -29,7 +34,7 @@ int main()
     today.output();  // calls to the member function output w/ object today
 }
 
-// Definition must havethe class name b/c there may be other classes have member function with the name output
+// Definition must have the class name b/c there may be other classes have member function with the name output
 // The operator :: is called the scope resolution operator, like the dot operator
 // Both scope resolution operator and dot operator tell which class
 // Scope uses with a class name (AKA type qualifier), dot uses with an object (class member variables)
@@ -265,7 +270,7 @@ Struct:
 Constructor for Initialization
 A constructor is a member function that is automatically called when an object of that class is declared, used to initialize the values
 of member variables and any other sort of initialization may be needed; Normally public
-! 1. Must have the sanme name as the class
+! 1. Must have the same name as the class
 ! 2. Definition cannot return a value, no return type
 ! 3. Cannot be called in the same way as an ordinary member function is called. eg: object.memberFunction() // Illegal
 Constructors usually are overloaded so that objects can be initialized in more than one way
