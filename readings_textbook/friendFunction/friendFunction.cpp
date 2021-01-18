@@ -202,12 +202,12 @@ void DayofYear::output() {
  * the heading of the func definition should also have a const to match
  */
 class Sample {
-  public:
+ public:
     Sample();
     friend int compare(const Sample &s1, const Sample &s2);
     void input();
     void output() const;
-  private:
+ private:
     int stuff;
     double moreStuff;
 };
