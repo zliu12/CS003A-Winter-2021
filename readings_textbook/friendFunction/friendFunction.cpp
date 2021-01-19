@@ -187,7 +187,7 @@ void DayofYear::output() {
  */
 
 /**
- * Modifier const
+ * TODO: Modifier const
  * If you use const for one parameter of a particular type, then you should use
  * it for every other parameter that has that type and that is not changed by
  * the func calls.
