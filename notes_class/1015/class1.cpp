@@ -11,7 +11,7 @@
 #define NUDGE 0.01
 
 class Color {
- private: 
+ private:
   double _red, _green, _blue;
 
   double _value(double v) {
@@ -78,26 +78,26 @@ class Color {
     return o;
   }
 
-	// Assignment operator
-	Color operator=(const Color &c) {
-		_red = c._red;
-		_green = c._green;
-		_blue = c._blue;
-		return *this;
-	}
+  // Assignment operator
+  Color operator=(const Color &c) {
+    _red = c._red;
+    _green = c._green;
+    _blue = c._blue;
+    return *this;
+  }
 
-	// Return by copy
-	Color copy() {
-		return *this;
-	}
+  // Return by copy
+  Color copy() {
+    return *this;
+  }
 
-	// Return by reference
-	Color &ref() {
-		return *this;
-	}
+  // Return by reference
+  Color &ref() {
+    return *this;
+  }
 
-	// Uses the constructor for std::string that accept char *
-	std::string toString() const {
+  // Uses the constructor for std::string that accept char *
+  std::string toString() const {
 		char buf[0x100];
 		sprintf(buf, "[%.2lf, %.2lf, %.2lf]", _red, _green, _blue);
 		return buf;

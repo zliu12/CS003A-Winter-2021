@@ -11,16 +11,19 @@ class DayofYear {
   // Precondition: theMonth and theDay form a possible date.
   // Initializes the date according to the arguments.
   DayofYear(int theMonth, int theDay);
+
   // Defacult consturctor declaration: initializes the date to January first.
   DayofYear();
+
   void input();
   void output();
+
   // Accessor: returns the month, 1 for Jan, 2 for Feb, etc
   int getMonth();
   // Accessor: return the day of the month
   int getDay();
 
-  bool before(DayofYear date1, DayofYear dates);
+  bool before(DayofYear date1, DayofYear date2);
 
   // friend func declaration
   friend bool after(DayofYear date1, DayofYear date2);
@@ -39,7 +42,7 @@ class DayofYear {
 // member function. If you do, you must decide whether the calling object should
 // be the first date or the second date (which must use the private member
 // variables as the args).
-// eg: bool equal(DayofYear month, DayofYear day);
+// eg: bool equal(DayofYear firstDate, DayofYear SecondDate);
 bool equal(DayofYear date1, DayofYear date2);
 
 // friend func @ln26 definition
@@ -76,7 +79,7 @@ int main() {
 bool equal(DayofYear date1, DayofYear date2) {
   //! Another way to define, simpler, more efficient but illegal b/c month & day
   //! are private vars, only member func can "use" them.
-  // return (date1.month == date2.month && date1.day == date2.day);
+  //! return (date1.month == date2.month && date1.day == date2.day);
   return (date1.getMonth() == date2.getMonth() &&
           date1.getDay() == date2.getDay());
 }
@@ -131,7 +134,7 @@ void DayofYear::output() {
  * A friend func of a class isn't a member func, but has access to the private
  * member of that class.
  * Can directly read the value of member vars and change'em by "=".
- * Must name is as a friend in the class definition.
+ * Must name it as a friend in the class definition.
  * eg:
  *  Keyword friend at the beginning, declared inside of the class definition
  *  Below, the equal definition is legal
@@ -143,8 +146,8 @@ void DayofYear::output() {
  * 
  * Friend func defined and called exaclty like the ordinary function.
  * Friend func equal(DayOfYear date1, DayOfYear date2) definition doesn't inlude
- * the qualifier DayOfYear::(included for member funcs), not called by using the
- * dot operator.
+ * the qualifier DayOfYear::(included for member funcs), so cannot be called by 
+ * using the dot operator.
  * A friend func can access the private member vars/funcs of the class by name,
  * just like the member funcs
  */
