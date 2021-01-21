@@ -1,7 +1,7 @@
 all: dtime1
 
 dtime1: dtime1.o dtime.o
-	g++ -o $@ $<
+	g++ -o $@ $^
 
 dtime1.o: dtime1.cpp dtime.h
 	g++ -c $<

@@ -63,7 +63,7 @@ class DigitalTime {
   void advance(int minutesAdded);
 
   // The obj has a time value then changed by adding hours and minutes
-  void advance(int hourseAddes, int minutesAdded);
+  void advance(int hoursAdded, int minutesAdded);
 
   // Overloads the >> operator for input vals of type DigitalTime
   friend std::istream& operator>>(std::istream& ins, DigitalTime& theObject);

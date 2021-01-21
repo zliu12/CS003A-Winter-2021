@@ -1,4 +1,4 @@
-all: color1 guard1
+all: color1
 
 color1: color1.o color.o
 	# $^ refers to ALL the files above (color1.o, color.o)
@@ -12,8 +12,5 @@ color.o: color.cpp color.h
 	# $< refers only to the first argument above (color.cpp)
 	g++ -c $<
 
-guard1: guard1.cpp a.h b.h c.h
-	g++ -o $@ $<
-
 clean:
-	rm -f color? guard? *.o
+	rm -f color? *.o
