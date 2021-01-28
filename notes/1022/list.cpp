@@ -37,11 +37,6 @@ void List::add(int v) {
 
 // Check if value is in list
 bool List::search(int v) {
-  // Always do this check (list can be empty)
-  if (_head == nullptr) {
-    return false;
-  }
-
   for (Node* np = _head; np != nullptr; np = np->next) {
     if (np->value == v) {
       return true;

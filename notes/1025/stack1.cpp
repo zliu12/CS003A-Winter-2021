@@ -25,7 +25,7 @@ int main() {
   CHECK("last pushed item should be on top", s1.top() == 200);
 
   CHECK("should pop the last pushed value", s1.pop() == 200);
-  CHECK("should not be empty after push", !s1.empty());
-  CHECK("size should be 1 after one push", s1.size() == 1);
+  CHECK("should not be empty after pop", !s1.empty());
+  CHECK("size should be 1 after one pop", s1.size() == 1);
   CHECK("last pushed item should be on top", s1.top() == 100);
 }
