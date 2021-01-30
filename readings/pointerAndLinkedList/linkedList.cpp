@@ -185,3 +185,112 @@ void insert(NodePtr afterMe, int theNumber) {
   // new node
   afterMe->link = tempPtr;
 }
+
+/*
+TODO: Variations on Linked Lists
+Doubly linked list
+1.Two links, one link points to the next node, one link points to the previous
+  node.
+  struct Node {
+    int data;
+    Node *forwardlink
+    Node *backlink;
+  };
+2.The binary tree
+  You can reach any node from the top(root) node by some path that follows the
+  links.
+  No cycles in the tree, eventually get to an "end", like prime factorization.
+  Each node has two links point to other nodes (or nullptr).
+  Pointer named root points to teh root node(top node), like the head in an
+  ordinary linked list.
+  The nodes at the ends of branches with both link instance vars set to NULL are
+  known as leaf nodes.
+  struct TreeNode {
+    int data;
+    TreeNode *leftLink;
+    TreeNode *rightLink;
+  }
+ */
+
+/* 
+TODO: Linked List of Classes
+Header file for Node.h, interface for a node class that behaves similarly to
+the struct in implementation
+
+namespacelinkedlistclasses {
+  class Node {
+    public:
+     Node();
+     Node(int value, Node *next); // Constructors to intialize a node
+     int getData() const; // Retrieve value for this node
+     Node *getLink() const; // Retrieve next Node in the list
+     void setData(int value);  // Use to change the ref to the next node
+
+    private:
+     int data;
+     Node *link;
+  };
+  typedef Node *NodePtr;
+}
+
+Implementation File for a Node class
+#include <iostream>
+#include "Node.h"
+
+namespace linkedlistofclasses {
+  Node::Node() : data(0), link(NULL) {}
+  Node::Node(int value, Node *next) : data(value), link(next) {}
+  int Node::getData() const {
+    return data;
+  }
+  Node* Node::getLink() const {
+    return link;
+  }
+  void Node::setData(int value) {
+    data = value;
+  }
+  void Node::setLink(Node *next) {
+    link = next;
+  }
+}
+
+Program Using the Node Class
+#include <iostream>
+#include "Node.h"
+
+using namespace std;
+using namespace linkedlistofclasses;
+
+*Insert a new node onto the head of the list and is a class-based version
+void headInsert(NodePtr &head, int theNumber) {
+  NodePtr tempPtr;
+  *The constructor sets tempPtr->link to head and sets the data val to theNumber
+  tempPtr = new Node(theNumber, head);
+  head == tempPtr;
+}
+
+int main() {
+  NodePtr head, tmp;
+  *Create a list of nodes 4->3->2->1->0
+  head = new Node(0, NULL);
+  for (int i = 1; i < 5; i++) {
+    headInsert(head, i);
+  }
+  *Iterate through the list and display each value
+  tmp = head;
+  while (tmp != NULL) {
+    cout << tmp->getData() << endl;
+    tmp = tmp->getLink();
+  }
+  *Delelte all nodes in the list be4 exiting the program
+  tmp = head;
+  while (tmp != NULL) {
+    NodePtr nodeToDelete = tmp;
+    tmp = tmp->getLink();
+    delete nodeToDelete;
+  }
+  return 0;
+}
+ */
+
+

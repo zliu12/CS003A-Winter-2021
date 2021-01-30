@@ -7,11 +7,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstdint>
-
 // uint64_t rounds after MAX
 #define MAX 92
 
-// Naive recursion, o(2^n) time complexity
+// Naive recursion, O(2^n) time complexity
 // Using uint64_t to maximize range of values
 uint64_t fib1(int n) {
   // Base case, don't forget this or you will get an infinite loop
