@@ -1,5 +1,5 @@
 /**
- * Polymorphism Exmaple.
+ * Polymorphism Exmaple1.
  *
  * Copyright (c) [2021], Qichang.L
  */
