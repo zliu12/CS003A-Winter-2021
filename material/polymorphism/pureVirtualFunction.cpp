@@ -45,10 +45,10 @@ void test1() {
   // Base a;
   // new Base;
   // Derived b;
-  Base *derived1 = new Derived1;
-  Base *derived2 = new Derived2;
-  derived1->func();
-  derived2->func();
+  Base *dp1 = new Derived1;
+  Base *dp2 = new Derived2;
+  dp1->func();
+  dp2->func();
 }
 
 int main() {
