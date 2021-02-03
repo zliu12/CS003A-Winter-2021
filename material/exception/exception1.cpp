@@ -78,7 +78,7 @@ void caller2(int test) {
 }
 
 int main() {
-  for (int i = 3; i >= 0; i--) {
+  for (int i = 5; i >= 0; i--) {
     caller2(i);
   }
   return 0;

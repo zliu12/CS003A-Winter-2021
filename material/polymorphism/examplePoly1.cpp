@@ -29,7 +29,7 @@ class Calculator {
     // 在真实的开发中，提倡开闭原则：对扩展进行开放，对修改进行关闭
   }
 
-  int num1, num2; // 操作数1，2
+  int num1, num2;   // 操作数1，2
 };
 
 void test1() {
