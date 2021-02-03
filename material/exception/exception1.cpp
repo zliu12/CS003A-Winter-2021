@@ -60,7 +60,7 @@ void caller1(int test) {
     // 检测异常
     fun(test);
     // 捕获异常
-  } catch(int) {
+} catch(int) {
     printf("caller1捕获int, ");
   }
   printf("caller1调用正常结束\n");
