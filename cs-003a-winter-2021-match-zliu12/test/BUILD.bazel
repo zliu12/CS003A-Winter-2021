@@ -1,0 +1,12 @@
+load("@rules_cc//cc:defs.bzl", "cc_test")
+cc_test(
+	name="match_test",
+	srcs=["match_test.cpp"],
+	copts=["-Iexternal/gtest/include"],
+	deps=[
+		"@gtest//:gtest",
+		"@gtest//:gtest_main",
+		"//match",
+		"//data",
+	],
+)
