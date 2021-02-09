@@ -14,5 +14,7 @@ To precisely document their required behavior and test your implementation, the 
 1. Make all your changes only within the **species/** folder. Specifically, do NOT edit the tests.
 1. Add header guards to the header files and copyright messages to all your files.
 1. Run the tests with **bazel test test/species_test** from the top project folder. You must have **bazel** installed (see [Installing Bazel](https://docs.bazel.build/versions/master/install.html)).
+1. Run **bazel test test/species_test --test_output=all** for more info.(errors summary, etc)
+1. Run **bazel clean** to clean up.
 1. One of the tests in *species_test* checks for inequality of Gelatin instances, for which you will need to implement operator overloading.
 1. Use *double* for values like *height* and *weight* because they can be fractional (don't use *float* as it can cause issues with checking equality).
